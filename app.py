@@ -2,22 +2,15 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-submitted_data = {}
-
 
 @app.route("/", methods=["GET", "POST"])
-def form():
-    global submitted_data
-
+def index():
+    name = email = message = None
     if request.method == "POST":
         name = request.form["name"]
         email = request.form["email"]
         message = request.form["message"]
-
-        # Store data for display
-        submitted_data = {"name": name, "email": email, "message": message}
-
-    return render_template("form.html", data=submitted_data)
+    return render_template("form.html", name=name, email=email, message=message)
 
 
 if __name__ == "__main__":
