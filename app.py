@@ -4,12 +4,14 @@ app = Flask(__name__)
 
 
 @app.route("/", methods=["GET", "POST"])
-def index():
-    name = email = message = None
+def form():
+    name = email = message = None  # Default values
+
     if request.method == "POST":
-        name = request.form["name"]
-        email = request.form["email"]
-        message = request.form["message"]
+        name = request.form.get("name")
+        email = request.form.get("email")
+        message = request.form.get("message")
+
     return render_template("form.html", name=name, email=email, message=message)
 
 
