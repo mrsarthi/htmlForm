@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def form():
-    name = email = message = None  # Default values
+    name = email = message = None
 
     if request.method == "POST":
         name = request.form.get("name")
